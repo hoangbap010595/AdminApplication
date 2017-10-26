@@ -2,59 +2,73 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_PageSingle.cshtml";
 }
+<style>
+    .validation-summary-errors {
+        display: inline-block;
+    }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+        .validation-summary-errors ul {
+            list-style: none;
+        }
+
+            .validation-summary-errors ul li {
+                color: darkorange;
+            }
+</style>
+<div class="login-page ls-closed">
+    <div class="login-box">
+        <div class="logo">
+            <a href="javascript:void(0);">Admin<b>BSB</b></a>
+            <small>Admin BootStrap Based - Material Design</small>
+        </div>
+        <div class="card">
+            <div class="body">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "sign_in", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="msg">@Html.ValidationSummary()</div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Username", autofocus = true })
+                            @*<input type="text" class="form-control" name="username" placeholder="Username" required autofocus>*@
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                    </div>
-                </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">lock</i>
+                            </span>
+                            <div class="form-line">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                                @*<input type="password" class="form-control" name="password" placeholder="Password" required>*@
+                            </div>
+                        </div>
+                        <div class="row">
+                            @*<div class="col-xs-8 p-t-5">
+                                <input type="checkbox" name="RememberMe" id="rememberme" class="filled-in chk-col-pink">
+                                <label for="rememberme">Remember Me</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
+                            </div>*@
+                            <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SIGN IN</button>
+                        </div>
+                        <div class="row m-t-15 m-b--20">
+                            <div class="col-xs-6">
+                                <a href="/Account/Register">Register Now!</a>
+                            </div>
+                            <div class="col-xs-6 align-right">
+                                <a href="/Account/ForgotPassword">Forgot Password?</a>
+                            </div>
+                        </div>
+                }
+                <!--End form login-->
+            </div>
+        </div>
     </div>
 </div>
 
