@@ -3741,6 +3741,8 @@
     <Content Include="Views\Error\Error500.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Shared\_PageSingle.cshtml" />
+    <Content Include="Views\Shared\_SidebarLeft.cshtml" />
+    <Content Include="Views\Shared\_SidebarRight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
