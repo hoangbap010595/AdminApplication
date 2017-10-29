@@ -3690,6 +3690,7 @@
     <Content Include="Assets\plugins\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Assets\plugins\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Assets\plugins\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <None Include="Properties\PublishProfiles\Default.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
