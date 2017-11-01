@@ -1,0 +1,244 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Masterial.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/Dashboard/Dashboard.js"></script>
+
+<div class="block-header">
+    <h2>DASHBOARD</h2>
+</div>
+<!-- Widgets -->
+<div class="row clearfix">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-pink hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">playlist_add_check</i>
+            </div>
+            <div class="content">
+                <div class="text">NEW TASKS</div>
+                <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-cyan hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">help</i>
+            </div>
+            <div class="content">
+                <div class="text">NEW TICKETS</div>
+                <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-light-green hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">forum</i>
+            </div>
+            <div class="content">
+                <div class="text">NEW COMMENTS</div>
+                <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-orange hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">person_add</i>
+            </div>
+            <div class="content">
+                <div class="text">NEW VISITORS</div>
+                <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Widgets -->
+<div class="row clearfix">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>Doanh thu theo tuần</h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                <canvas id="bar_chart" height="220" width="440" style="display: block; width: 440px; height: 220px;"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>Target</h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <div id="donut_chart" class="graph"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row clearfix">
+    <!--Visitors-->
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="header bg-blue-grey">
+                <h2>
+                    Lượt truy cập<small>Tự động cập nhật</small>
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="rotation" data-loading-color="lightGreen">
+                            <i class="material-icons">loop</i>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <ul class="dashboard-stat-list">
+                    <li>
+                        Hôm nay
+                        <span class="pull-right"><b>1 200</b> <small>USERS</small></span>
+                    </li>
+                    <li>
+                        Ngày hôm qua
+                        <span class="pull-right"><b>3 872</b> <small>USERS</small></span>
+                    </li>
+                    <li>
+                        Tuần trươc
+                        <span class="pull-right"><b>26 582</b> <small>USERS</small></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--End Visitors-->
+    <!--Order-->
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="header bg-blue-grey">
+                <h2>
+                    Đơn hàng<small>Tự động cập nhật</small>
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="rotation" data-loading-color="lightGreen">
+                            <i class="material-icons">loop</i>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <ul class="dashboard-stat-list">
+                    <li>
+                        Chưa xác nhận
+                        <span class="pull-right"><b>1 200</b> <small>USERS</small></span>
+                    </li>
+                    <li>
+                        Đã thanh toán
+                        <span class="pull-right"><b>3 872</b> <small>USERS</small></span>
+                    </li>
+                    <li>
+                        Giao dịch không thành công
+                        <span class="pull-right"><b>26 582</b> <small>USERS</small></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--End Order-->
+    <!--Order-->
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="header bg-blue-grey">
+                <h2>
+                    Top sản phẩm<small>Tự động cập nhật</small>
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="rotation" data-loading-color="lightGreen">
+                            <i class="material-icons">loop</i>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <ul class="dashboard-stat-list">
+                    <li>
+                        Chưa xác nhận
+                        <span class="pull-right"><b>1 200</b> <small>USERS</small></span>
+                    </li>
+                    <li>
+                        Đã thanh toán
+                        <span class="pull-right"><b>3 872</b> <small>USERS</small></span>
+                    </li>
+                    <li>
+                        Giao dịch không thành công
+                        <span class="pull-right"><b>26 582</b> <small>USERS</small></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--End Order-->
+</div>
+

@@ -66,6 +66,11 @@ namespace WebAppMobile
                       , "~/Assets/plugins/flot-charts/jquery.flot.time.js"
                       //Sparkline Chart Plugin Js
                       , "~/Assets/plugins/jquery-sparkline/jquery.sparkline.js"
+                      //Morris Plugin Js
+                      , "~/Assets/plugins/raphael/raphael.min.js"
+                      , "~/Assets/plugins/morrisjs/morris.js"
+                      //Sweet Alert
+                      , "~/Assets/plugins/sweetalert/sweetalert.min.js"
                       //Custom Js
                       , "~/Assets/js/admin.js"
                       , "~/Assets/js/pages/index.js"
@@ -77,6 +82,7 @@ namespace WebAppMobile
                       , "~/Assets/plugins/node-waves/waves.css"
                       , "~/Assets/plugins/animate-css/animate.css"
                       , "~/Assets/plugins/morrisjs/morris.css"
+                      , "~/Assets/plugins/sweetalert/sweetalert.css"
                       , "~/Assets/css/style.css"
                       , "~/Assets/css/themes/all-themes.css"));
         }

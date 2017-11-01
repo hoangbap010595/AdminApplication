@@ -9,20 +9,23 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebAppMobile.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WebAppMobile.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext context = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private RoleManager<IdentityRole> _roleManager;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +37,9 @@ namespace WebAppMobile.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -49,6 +52,17 @@ namespace WebAppMobile.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+        public RoleManager<IdentityRole> RoleManager
+        {
+            get
+            {
+                return _roleManager ?? new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            }
+            private set
+            {
+                _roleManager = value;
             }
         }
 
@@ -120,7 +134,7 @@ namespace WebAppMobile.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -151,12 +165,18 @@ namespace WebAppMobile.Controllers
         {
             if (ModelState.IsValid)
             {
+                _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
                 var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
+                user.Avatar = "~/Assets/images/user.png";
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    if (!_userManager.IsInRole(User.Identity.GetUserId(), "Users"))
+                    {
+                        _userManager.AddToRole(User.Identity.GetUserId(), "Users");
+                    }
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
