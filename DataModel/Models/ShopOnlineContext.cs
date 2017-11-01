@@ -1,35 +1,12 @@
-﻿using System.Data.Entity;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using DataModel.Entity;
-
-namespace WebAppMobile.Models
+namespace DataModel.Entity
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
-    {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
-        {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
-            return userIdentity;
-        }
-        public string Avatar { get; set; }
-    }
+    using System.Data.Entity;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public partial class ShopOnlineContext : DbContext
     {
-        public ApplicationDbContext(): base("name=ShopOnlineContext", throwIfV1Schema: false)
+        public ShopOnlineContext()
+            : base("name=ShopOnlineContext")
         {
-
-        }
-        
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
         }
 
         public virtual DbSet<Category> Categories { get; set; }
@@ -44,14 +21,6 @@ namespace WebAppMobile.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<IdentityUserRole>()
-            .HasKey(r => new { r.UserId, r.RoleId })
-            .ToTable("AspNetUserRoles");
-
-            modelBuilder.Entity<IdentityUserLogin>()
-                .HasKey(l => new { l.LoginProvider, l.ProviderKey, l.UserId })
-                .ToTable("AspNetUserLogins");
-
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.Products)
                 .WithOptional(e => e.Category)

@@ -212,6 +212,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711010327139_Hoang.cs" />
+    <Compile Include="Migrations\201711010327139_Hoang.Designer.cs">
+      <DependentUpon>201711010327139_Hoang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711010337410_Enable.cs" />
+    <Compile Include="Migrations\201711010337410_Enable.Designer.cs">
+      <DependentUpon>201711010337410_Enable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711010339433_Avatar.cs" />
+    <Compile Include="Migrations\201711010339433_Avatar.Designer.cs">
+      <DependentUpon>201711010339433_Avatar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711010345214_UpdateBy.cs" />
+    <Compile Include="Migrations\201711010345214_UpdateBy.Designer.cs">
+      <DependentUpon>201711010345214_UpdateBy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -3757,6 +3774,26 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{82f285ac-7022-4b3d-8bbd-8ba5f5dc3c88}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711010327139_Hoang.resx">
+      <DependentUpon>201711010327139_Hoang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010337410_Enable.resx">
+      <DependentUpon>201711010337410_Enable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010339433_Avatar.resx">
+      <DependentUpon>201711010339433_Avatar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010345214_UpdateBy.resx">
+      <DependentUpon>201711010345214_UpdateBy.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -3775,7 +3812,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>10046</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1111/</IISUrl>
+          <IISUrl>http://localhost:4040/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

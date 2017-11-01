@@ -6,10 +6,12 @@
         .GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
     var userName = "";
     var email = "";
+    var avatar = "";
     if (user != null)
     {
         userName = user.UserName;
         email = user.Email;
+        avatar = user.Avatar;
     }
 }
 @if (Request.IsAuthenticated)
@@ -21,6 +23,7 @@
         <div class="user-info">
             <div class="image">
                 <img src="~/Assets/images/user.png" width="48" height="48" alt="User" />
+                @*<img src="@avatar" width="48" height="48" alt="User" />*@
             </div>
             <div class="info-container">
                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@userName</div>
