@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using WebAppMobile.Models;
+using System.Reflection;
+using System.Web.Mvc;
 
 namespace WebAppMobile
 {
@@ -40,7 +42,7 @@ namespace WebAppMobile
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
@@ -81,7 +83,7 @@ namespace WebAppMobile
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
+                manager.UserTokenProvider =
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
@@ -104,6 +106,47 @@ namespace WebAppMobile
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+    }
+
+    public class ReflectionController
+    {
+        public List<Type> GetControllers(string namespaces)
+        {
+            List<Type> lsController = new List<Type>();
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            IEnumerable<Type> types = assembly.GetTypes().Where(type => typeof(Controller).IsAssignableFrom(type) && type.Namespace.Contains(namespaces)).OrderBy(x => x.Name);
+
+            return types.ToList();
+        }
+
+        public List<string> GetActions(Type controller)
+        {
+            List<string> lsActions = new List<string>();
+            IEnumerable<MemberInfo> memberInfo = controller.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly
+                    | BindingFlags.Public).Where(m => m.GetCustomAttributes(typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute), true).Any()).OrderBy(x => x.Name);
+
+            foreach (MemberInfo method in memberInfo)
+            {
+                if (method.ReflectedType.IsPublic && !method.IsDefined(typeof(NonActionAttribute)))
+                {
+                    lsActions.Add(method.Name.ToString());
+                }
+            }
+            return lsActions;
+        }
+    }
+
+    public class AuthorizeController : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            string[] lsPermisstion = { "Home-Index", "Home-About" }; 
+            string actionName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName + "-" + filterContext.ActionDescriptor.ActionName;
+            if (!lsPermisstion.Contains(actionName))
+            {
+                filterContext.Result = new RedirectResult("/Error/Index");
+            }
         }
     }
 }

@@ -212,21 +212,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711010327139_Hoang.cs" />
-    <Compile Include="Migrations\201711010327139_Hoang.Designer.cs">
-      <DependentUpon>201711010327139_Hoang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711010337410_Enable.cs" />
-    <Compile Include="Migrations\201711010337410_Enable.Designer.cs">
-      <DependentUpon>201711010337410_Enable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711010339433_Avatar.cs" />
-    <Compile Include="Migrations\201711010339433_Avatar.Designer.cs">
-      <DependentUpon>201711010339433_Avatar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711010345214_UpdateBy.cs" />
-    <Compile Include="Migrations\201711010345214_UpdateBy.Designer.cs">
-      <DependentUpon>201711010345214_UpdateBy.cs</DependentUpon>
+    <Compile Include="Migrations\201711011210119_createDatabase.cs" />
+    <Compile Include="Migrations\201711011210119_createDatabase.Designer.cs">
+      <DependentUpon>201711011210119_createDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3781,17 +3769,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711010327139_Hoang.resx">
-      <DependentUpon>201711010327139_Hoang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711010337410_Enable.resx">
-      <DependentUpon>201711010337410_Enable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711010339433_Avatar.resx">
-      <DependentUpon>201711010339433_Avatar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711010345214_UpdateBy.resx">
-      <DependentUpon>201711010345214_UpdateBy.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711011210119_createDatabase.resx">
+      <DependentUpon>201711011210119_createDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

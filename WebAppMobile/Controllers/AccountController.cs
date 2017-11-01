@@ -167,7 +167,7 @@ namespace WebAppMobile.Controllers
             {
                 _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
                 var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
-                user.Avatar = "~/Assets/images/user.png";
+                user.Avatar = "../Assets/images/user.png";
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

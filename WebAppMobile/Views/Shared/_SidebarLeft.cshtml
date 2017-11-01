@@ -1,26 +1,5 @@
 ﻿<aside id="leftsidebar" class="sidebar">
     <!-- User Info -->
-    @*<div class="user-info">
-            <div class="image">
-                <img src="~/Assets/images/user.png" width="48" height="48" alt="User" />
-            </div>
-            <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                <div class="email">john.doe@example.com</div>
-                <div class="btn-group user-helper-dropdown">
-                    <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                    <ul class="dropdown-menu pull-right">
-                        <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                        <li role="seperator" class="divider"></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                        <li role="seperator" class="divider"></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>*@
     @Html.Partial("_LoginPartial")
     <!-- #User Info -->
     <!-- Menu -->
@@ -30,70 +9,103 @@
             <li class="active">
                 <a href="index.html">
                     <i class="material-icons">home</i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="pages/typography.html">
-                    <i class="material-icons">store</i>
-                    <span>Quản trị sản phẩm</span>
-                </a>
-            </li>
-            <li>
-                <a href="pages/helper-classes.html">
-                    <i class="material-icons">layers</i>
-                    <span>Quản trị công nợ</span>
+                    <span>Trang chính</span>
                 </a>
             </li>
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">supervisor_account</i>
-                    <span>Quản trị người dùng</span>
+                    <i class="material-icons">equalizer</i>
+                    <span>Quản lý báo cáo</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="pages/widgets/cards/basic.html">
+                            <span>Tồn kho</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/widgets/cards/colored.html">
+                            <span>Doanh thu</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">layers</i>
+                    <span>Quản trị danh mục</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <span>Nhóm quyền</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <span>Phân quyền</span>
+                            <span>Khuyến mãi</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/widgets/cards/basic.html">Basic</a>
+                                <a href="pages/widgets/infobox/infobox-1.html">Danh sách khuyến mãi</a>
                             </li>
                             <li>
-                                <a href="pages/widgets/cards/colored.html">Colored</a>
+                                <a href="pages/widgets/infobox/infobox-2.html">Thêm sản phẩm</a>
                             </li>
                             <li>
-                                <a href="pages/widgets/cards/no-header.html">No Header</a>
+                                <a href="pages/widgets/infobox/infobox-3.html">Thiết lập</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <span>Tạo account</span>
+                        <a href="pages/widgets/cards/colored.html">
+                            <span>Sản phẩm</span>
                         </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="pages/widgets/infobox/infobox-1.html">Infobox-1</a>
-                            </li>
-                            <li>
-                                <a href="pages/widgets/infobox/infobox-2.html">Infobox-2</a>
-                            </li>
-                            <li>
-                                <a href="pages/widgets/infobox/infobox-3.html">Infobox-3</a>
-                            </li>
-                            <li>
-                                <a href="pages/widgets/infobox/infobox-4.html">Infobox-4</a>
-                            </li>
-                            <li>
-                                <a href="pages/widgets/infobox/infobox-5.html">Infobox-5</a>
-                            </li>
-                        </ul>
                     </li>
+                    <li>
+                        <a href="pages/widgets/cards/colored.html">
+                            <span>Khách hàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/widgets/cards/colored.html">
+                            <span>Nhà sản xuất</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/widgets/cards/colored.html">
+                            <span>Tỉnh thành (Vận chuyển)</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">store</i>
+                    <span>Quản lý kho</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span>Master data</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span>Tồn kho</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span>Nhập kho</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span>Xuất kho</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span>Đơn hàng từ website</span>
+                        </a>
+                    </li>
+
                 </ul>
             </li>
             <li>
@@ -103,99 +115,85 @@
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="pages/ui/alerts.html">Alerts</a>
+                        <a href="pages/ui/alerts.html">
+                            <span>Alerts</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="pages/ui/animations.html">Animations</a>
+                        <a href="pages/ui/animations.html">
+                            <span>Animations</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="pages/ui/badges.html">Badges</a>
+                        <a href="pages/ui/badges.html">
+                            <span>Badges</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="pages/ui/breadcrumbs.html">Breadcrumbs</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/buttons.html">Buttons</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/collapse.html">Collapse</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/colors.html">Colors</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/dialogs.html">Dialogs</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/icons.html">Icons</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/labels.html">Labels</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/list-group.html">List Group</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/media-object.html">Media Object</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/modals.html">Modals</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/notifications.html">Notifications</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/pagination.html">Pagination</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/preloaders.html">Preloaders</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/progressbars.html">Progress Bars</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/range-sliders.html">Range Sliders</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/sortable-nestable.html">Sortable & Nestable</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/tabs.html">Tabs</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/thumbnails.html">Thumbnails</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/tooltips-popovers.html">Tooltips & Popovers</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/waves.html">Waves</a>
+                        <a href="pages/ui/breadcrumbs.html">
+                            <span>Breadcrumbs</span>
+                        </a>
                     </li>
                 </ul>
             </li>
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">live_help</i>
-                    <span>Hướng dẫn</span>
+                    <i class="material-icons">settings</i>
+                    <span>Hệ thống</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="pages/forms/basic-form-elements.html">Basic Form Elements</a>
+                        <a href="pages/forms/basic-form-elements.html">
+                            <span>Phân quyền</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                        <a href="pages/forms/advanced-form-elements.html">
+                            <span>Chức năng</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="pages/forms/form-examples.html">Form Examples</a>
+                        <a href="pages/forms/form-examples.html">
+                            <span>Cấu hình website</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="pages/forms/form-validation.html">Form Validation</a>
+                        <a href="pages/forms/form-validation.html">
+                            <span>Quản lý fanpage</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">widgets</i>
+                    <span>Quản lý website</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="pages/forms/basic-form-elements.html">
+                            <span>Trang giới thiệu</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="pages/forms/form-wizard.html">Form Wizard</a>
+                        <a href="pages/forms/advanced-form-elements.html">
+                            <span>Trang hướng dẫn</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="pages/forms/editors.html">Editors</a>
+                        <a href="pages/forms/form-examples.html">
+                            <span>Trang tin tức</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/forms/form-validation.html">
+                            <span>Trang liên hệ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/forms/form-validation.html">
+                            <span>Trang hình thức vận chuyển</span>
+                        </a>
                     </li>
                 </ul>
             </li>
