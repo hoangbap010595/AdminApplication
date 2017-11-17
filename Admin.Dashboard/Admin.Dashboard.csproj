@@ -136,6 +136,7 @@
     <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\a.pubxml" />
     <None Include="Properties\PublishProfiles\DashBoard.pubxml" />
   </ItemGroup>
   <PropertyGroup>
